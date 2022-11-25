@@ -64,9 +64,14 @@ public class JogoDaVelhaGP06 {
                         IllegalArgumentException erro = new IllegalArgumentException();
                         throw erro;
                     }
-
+                    unidadeOcupada = UnidadeMatriz(matrizJogo);
+                    if (unidadeOcupada == 1) {
+                        IllegalArgumentException erro = new IllegalArgumentException();
+                        throw erro;
+                        System.out.println("A posição não pode estar ocupada");
+                    }
                 } catch (InputMismatchException erro) {
-                    System.err.println("O valor deve ser um número.");
+                    System.err.println("O valor deve ser um número");
                     scan.nextLine();
                 }
 
@@ -172,4 +177,16 @@ public class JogoDaVelhaGP06 {
         }
         return full;
     }
+    public static int UnidadeMatriz(String [][] matrizJogo) {
+        int unid = 1;
+        for (int i = 0; i < matrizJogo.length; i++) {
+            for (int j = 0; j < matrizJogo[i].length; j++) {
+                if (matrizJogo [i][j] == " ") {
+                    unid = 0;
+                }
+            }
+        }
+        return unid;
+    }
+
 }
